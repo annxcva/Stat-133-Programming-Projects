@@ -1,0 +1,248 @@
+---
+output: 
+  pdf_document: 
+      keep_tex: true
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(dplyr)
+library(tibble)
+library(tidyr)
+library(tidyverse)
+library(TeachingDemos)
+library(readxl)
+```
+
+```{r}
+# Creating a data frame with the counts of sex partners
+
+srsp <- data.frame(
+  Count = c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14),
+  Men = c(44, 195, 20, 3, 3, 5, 3, 1, 1, 0, 0, 1),
+  Women = c(102, 233, 18, 9, 2, 1, 0, 0, 0, 0, 0, 0)
+)
+print(srsp)
+
+# Creating a data frame with the prior hyperparameters 
+
+gamma <- data.frame( 
+  a = c(0.1, 0.5, 1, 2),
+  b = c(0.1, 0.5, 1, 2)
+)
+
+# Updating the priors using the data 
+
+gamma <- gamma %>%
+  mutate(total_count = sum(srsp$Count * srsp$Women),
+         n = sum(srsp$Women),
+         a.star = a + total_count,
+         b.star = b + n)
+print(gamma)
+```
+
+```{r}
+# Plotting the Gamma (0.1,0.1) prior along with its posterior distribution
+lambda <- seq(0.00,5.00,0.01)
+prior1 <- dgamma(lambda, shape = 0.1, rate = 0.1)
+post1 <- dgamma(lambda, shape = 309.1, rate = 365.1)
+plot(lambda, post1, xlab = expression(lambda), ylab = "Density", type = "l")
+lines(lambda, prior1, lty = 2)
+
+# Plotting the Gamma (0.5,0.5) prior along with its posterior distribution
+lambda <- seq(0.00,5.00,0.01)
+prior2 <- dgamma(lambda, shape = 0.5, rate = 0.5)
+post2 <- dgamma(lambda, shape = 309.5, rate = 365.5)
+plot(lambda, post2, xlab = expression(lambda), ylab = "Density", type = "l")
+lines(lambda, prior2, lty = 2)
+
+# Plotting the Gamma (1,1) prior along with its posterior distribution
+lambda <- seq(0.00,5.00,0.01)
+prior3 <- dgamma(lambda, shape = 1, rate = 1)
+post3 <- dgamma(lambda, shape = 310, rate = 366)
+plot(lambda, post3, xlab = expression(lambda), ylab = "Density", type = "l")
+lines(lambda, prior3, lty = 2)
+
+# Plotting the Gamma (2,2) prior along with its posterior distribution
+lambda <- seq(0.00,5.00,0.01)
+prior4 <- dgamma(lambda, shape = 2, rate = 2)
+post4 <- dgamma(lambda, shape = 311, rate = 367)
+plot(lambda, post4, xlab = expression(lambda), ylab = "Density", type = "l")
+lines(lambda, prior4, lty = 2)
+
+```
+
+```{r}
+gamma <- gamma %>%
+  mutate(mean.post = a.star / b.star,
+         median.post = qgamma(p = 0.5, shape = a.star, rate = b.star),
+         mode.post = (a.star - 1) / b.star) %>%
+  # Rounding off values of decimals to 4 decimal places
+  mutate(across(where(is.numeric), round, 4)) %>%
+  print()
+```
+
+```{r}
+# HPD interval for posterior of Gamma (0.1,0.1) prior
+hpd1 <- round(hpd(posterior.icdf = qgamma, shape = 309.1, rate = 365.1), digits = 4)
+
+# HPD interval for posterior of Gamma (0.5,0.5) prior
+hpd2 <- round(hpd(posterior.icdf = qgamma, shape = 309.5, rate = 365.5), digits = 4)
+
+# HPD interval for posterior of Gamma (1,1) prior
+hpd3 <- round(hpd(posterior.icdf = qgamma, shape = 310, rate = 366), digits = 4)
+
+# HPD interval for posterior of Gamma (2,2) prior
+hpd4 <- round(hpd(posterior.icdf = qgamma, shape = 311, rate = 367), digits = 4)
+
+hpd_intervals <- data.frame(
+  hpd.lower95 = c(hpd1[1], hpd2[1], hpd3[1], hpd4[1]),
+  hpd.upper95 = c(hpd1[2], hpd2[2], hpd3[2], hpd4[2]))
+
+
+gamma %>%
+ bind_cols(hpd_intervals) %>%
+  select(-mean.post, -median.post, -mode.post)
+```
+
+```{r}
+gamma %>%
+  select(a, b, a.star, b.star) %>%
+  mutate(
+    p.h1.prior = 1 - pgamma(q = 1, shape = a, rate = b),
+    p.h1.post = 1 - pgamma(q = 1, shape = a.star, rate = b.star)) %>%
+  mutate(
+    bf.10 = (p.h1.post)/(1-p.h1.post)/(p.h1.prior/(1-p.h1.prior)),
+    bf.01 = 1/bf.10) %>%
+  # Rounding off values of decimals to 4 decimal places
+  mutate(across(where(is.numeric), round, 4)) %>%
+  print()
+```
+
+```{r}
+pnb.jan <- read_excel(path = "C:/Users/amore_6ou078y/OneDrive/Documents/UP Subjects/Stat 133/Exercises/datasets/Pulso ng Bayan.xlsx", sheet = "Jan 2025")
+head(pnb.jan)
+
+pnb.feb <- read_excel(path = "C:/Users/amore_6ou078y/OneDrive/Documents/UP Subjects/Stat 133/Exercises/datasets/Pulso ng Bayan.xlsx", sheet = "Feb 2025")
+head(pnb.feb)
+```
+
+```{r}
+pnb.jan <- pnb.jan %>%
+  mutate(count = ceiling(vote/100*2400),
+         a.star = 1 + count,
+         b.star = 1 + 2400 - count)
+pnb.feb <- pnb.feb %>%
+  mutate(count= ceiling(vote/100*2400))
+head(pnb.jan)
+head(pnb.feb)
+```
+
+```{r}
+library(dplyr)
+
+# Merging pnb.jan and pnb.feb
+pnb.feb <- pnb.feb %>%
+  left_join(pnb.jan %>% select(candidate, a.star, b.star), 
+            by = "candidate", 
+            suffix = c("", "_jan")) %>% 
+  mutate(
+    a_prior = ifelse(!is.na(a.star), a.star, 1),  
+    b_prior = ifelse(!is.na(b.star), b.star, 1),  
+    
+    # Computing new a.star and b.star using priors
+    a.star_new = a_prior + count,
+    b.star_new = b_prior + (2400 - count)
+  ) %>% 
+  select(-party, -aware, -vote, -rank, -a.star, -b.star)
+
+
+print(pnb.feb)
+View(pnb.feb)
+```
+
+```{r}
+pnb.feb %>%
+  mutate(median = qbeta(p = 0.5, shape1 = a.star_new, shape2 = b.star_new)) %>%
+  rowwise() %>%
+  mutate(hpd.lower95 = hpd(posterior.icdf = qbeta,
+                           shape1 = a.star_new,
+                           shape2 = b.star_new,
+                           conf = 0.95)[1],
+         hpd.upper95 = hpd(posterior.icdf = qbeta,
+                           shape1 = a.star_new,
+                           shape2 = b.star_new,
+                           conf = 0.95)[2]) %>%
+  ggplot() +
+  geom_pointrange(aes(xmin = hpd.lower95, 
+                      xmax = hpd.upper95, 
+                      x = median,
+                      y = reorder(candidate, median))) +
+  xlab("Proportion of Voters") +
+  theme_bw() +
+  theme(
+        axis.title.y = element_blank(),
+        axis.text.y = element_text(size = 4)
+        )
+  
+```
+
+```{r}
+# Computing for Bayes factor
+pnb.feb %>%
+  mutate(p.h1.prior = 1 - pbeta(q = 0.5, shape1 = a_prior, shape2 = b_prior),
+         p.h1.post = 1 - pbeta(q = 0.5, shape1 = a.star_new, shape2 = b.star_new),
+         bf.10 = ifelse(p.h1.post == 0 | p.h1.post == 1, NA, 
+                        (p.h1.post / (1 - p.h1.post)) / (p.h1.prior / (1 - p.h1.prior))),
+         bf.01 = ifelse(is.na(bf.10), NA, 1 / bf.10)) %>%
+  select(candidate, bf.10, bf.01) %>%
+  # Rounding off values of decimals to 4 decimal places
+  mutate(across(where(is.numeric), round, 4)) %>%
+  head()
+```
+
+```{r}
+# Item 3 (INSERT COMPUTATION OF GAMMA HYPERPARAMETERS ABOVE THIS. a = 1, b = 1/3)
+
+accidents <- c(2, 4, 3, 1, 1, 3, 2, 2, 4, 0, 5, 2, 5, 2, 4, 4, 3, 1, 3, 8, 4, 2, 1, 1)
+n <- length(accidents)
+
+# Prior Parameters
+a_prior <- 1
+b_prior <- 1/3
+
+# Posterior Parameters
+a_post <- a_prior + sum(accidents)
+b_post <- b_prior + n 
+
+# 95% HPD Interval
+hpd_interval <- hpd(qgamma, shape = a_post, rate = b_post, conf = 0.95)
+print(round(hpd_interval, digits = 4))
+```
+
+```{r}
+# Ho: lambda = 3
+# Ha: lambda != 3
+# The computed 95% HPD interval in the earlier subitem was (2.1450, 3.4673). Since the interval contains 3, do not reject Ho. We have insufficient evidence to say that the mean number of traffic accidents per month is not equal to 3 at 5% level of significance. 
+```
+
+```{r}
+# Testing Ho: lambda = 3 vs. H1: lambda > 3 at 5% l.o.s.
+p.h0 = pgamma(q = 3, shape = a_post, rate = b_post)
+reject.ho = ifelse(p.h0<0.05, "yes","no")
+cat("reject.ho: ", reject.ho)
+```
+
+```{r}
+# Computing for Bayes factor
+p.h1.prior = 1 - pgamma(q = 3, shape = a_prior, rate = b_prior)
+p.h1.post = 1 - pgamma(q = 3, shape = a_post, rate = b_post)
+bf.10 = (p.h1.post / (1 - p.h1.post)) / (p.h1.prior / (1 - p.h1.prior))
+bf.01 = 1 / bf.10
+print(round(bf.10, digits = 4))
+print(round(bf.01, digits = 4))
+
+# Since B_10 < 1, we have negative evidence for the alternative hypothesis that lambda > 3. That is, we do not reject Ho at 5% level of significance.
+```

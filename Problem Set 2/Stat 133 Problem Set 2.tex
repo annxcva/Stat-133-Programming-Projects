@@ -1,0 +1,676 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+
+\documentclass[]{article}
+\usepackage{graphicx, enumitem, cancel, fancyhdr} 
+\usepackage[a4paper, margin=1.25in]{geometry}
+\pagestyle{fancy}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+
+\setlength{\headheight}{15pt}
+\lhead{2nd Sem, A.Y. 2024-2025}
+\chead{Stat 133: Problem Set 2}
+\rhead{Amores, Goti-ay, Razon}
+
+\title{Stat 133: Bayesian Statistical Inference \\ Problem Set 2}
+\author{Anne Amores \\ Miah Goti-ay \\ Justine Razon}
+\date{March 27, 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem 1}
+\textbf{Recall our example about the reports of number of sexual partners. Using the same dataset and assuming that the number of sexual partners are a random sample from Poisson($\lambda$), suppose we infer about the average number of sexual partners for women $\lambda$in the population. Use the four different vague priors for $\lambda$ used in that example.} \\
+
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creating a data frame with the counts of sex partners}
+\NormalTok{srsp }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Count =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{14}\NormalTok{),}
+  \AttributeTok{Men =} \FunctionTok{c}\NormalTok{(}\DecValTok{44}\NormalTok{, }\DecValTok{195}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+  \AttributeTok{Women =} \FunctionTok{c}\NormalTok{(}\DecValTok{102}\NormalTok{, }\DecValTok{233}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{)}
+\FunctionTok{print}\NormalTok{(srsp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Count Men Women
+## 1      0  44   102
+## 2      1 195   233
+## 3      2  20    18
+## 4      3   3     9
+## 5      4   3     2
+## 6      5   5     1
+## 7      6   3     0
+## 8      7   1     0
+## 9      8   1     0
+## 10     9   0     0
+## 11    10   0     0
+## 12    14   1     0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creating a data frame with the prior hyperparameters }
+\NormalTok{gamma }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{( }
+  \AttributeTok{a =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+  \AttributeTok{b =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{)}
+\CommentTok{\# Updating the priors using the data }
+\NormalTok{gamma }\OtherTok{\textless{}{-}}\NormalTok{ gamma }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{total\_count =} \FunctionTok{sum}\NormalTok{(srsp}\SpecialCharTok{$}\NormalTok{Count }\SpecialCharTok{*}\NormalTok{ srsp}\SpecialCharTok{$}\NormalTok{Women),}
+         \AttributeTok{n =} \FunctionTok{sum}\NormalTok{(srsp}\SpecialCharTok{$}\NormalTok{Women),}
+         \AttributeTok{a.star =}\NormalTok{ a }\SpecialCharTok{+}\NormalTok{ total\_count,}
+         \AttributeTok{b.star =}\NormalTok{ b }\SpecialCharTok{+}\NormalTok{ n)}
+\FunctionTok{print}\NormalTok{(gamma)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     a   b total_count   n a.star b.star
+## 1 0.1 0.1         309 365  309.1  365.1
+## 2 0.5 0.5         309 365  309.5  365.5
+## 3 1.0 1.0         309 365  310.0  366.0
+## 4 2.0 2.0         309 365  311.0  367.0
+\end{verbatim}
+
+\hfill
+
+\begin{enumerate}
+\item \textbf{Graph each prior and corresponding posterior  distribution using R.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plotting the Gamma (0.1,0.1) prior along with its posterior distribution}
+\NormalTok{lambda }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.00}\NormalTok{,}\FloatTok{5.00}\NormalTok{,}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{prior1 }\OtherTok{\textless{}{-}} \FunctionTok{dgamma}\NormalTok{(lambda, }\AttributeTok{shape =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.1}\NormalTok{)}
+\NormalTok{post1 }\OtherTok{\textless{}{-}} \FunctionTok{dgamma}\NormalTok{(lambda, }\AttributeTok{shape =} \FloatTok{309.1}\NormalTok{, }\AttributeTok{rate =} \FloatTok{365.1}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(lambda, post1, }\AttributeTok{xlab =} \FunctionTok{expression}\NormalTok{(lambda), }\AttributeTok{ylab =} \StringTok{"Density"}\NormalTok{, }
+     \AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Gamma (0.1,0.1) Prior and its Posterior"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(lambda, prior1, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Posterior"}\NormalTok{, }\StringTok{"Prior"}\NormalTok{),  }
+       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{),  }
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"black"}\NormalTok{),  }
+       \AttributeTok{bty =} \StringTok{"n"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{unnamed-chunk-2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plotting the Gamma (0.5,0.5) prior along with its posterior distribution}
+\NormalTok{lambda }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.00}\NormalTok{,}\FloatTok{5.00}\NormalTok{,}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{prior2 }\OtherTok{\textless{}{-}} \FunctionTok{dgamma}\NormalTok{(lambda, }\AttributeTok{shape =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{rate =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{post2 }\OtherTok{\textless{}{-}} \FunctionTok{dgamma}\NormalTok{(lambda, }\AttributeTok{shape =} \FloatTok{309.5}\NormalTok{, }\AttributeTok{rate =} \FloatTok{365.5}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(lambda, post2, }\AttributeTok{xlab =} \FunctionTok{expression}\NormalTok{(lambda), }\AttributeTok{ylab =} \StringTok{"Density"}\NormalTok{, }
+     \AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Gamma (0.5,0.5) Prior and its Posterior"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(lambda, prior2, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Posterior"}\NormalTok{, }\StringTok{"Prior"}\NormalTok{),  }
+       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{),  }
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"black"}\NormalTok{),  }
+       \AttributeTok{bty =} \StringTok{"n"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{unnamed-chunk-2-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plotting the Gamma (1,1) prior along with its posterior distribution}
+\NormalTok{lambda }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.00}\NormalTok{,}\FloatTok{5.00}\NormalTok{,}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{prior3 }\OtherTok{\textless{}{-}} \FunctionTok{dgamma}\NormalTok{(lambda, }\AttributeTok{shape =} \DecValTok{1}\NormalTok{, }\AttributeTok{rate =} \DecValTok{1}\NormalTok{)}
+\NormalTok{post3 }\OtherTok{\textless{}{-}} \FunctionTok{dgamma}\NormalTok{(lambda, }\AttributeTok{shape =} \DecValTok{310}\NormalTok{, }\AttributeTok{rate =} \DecValTok{366}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(lambda, post3, }\AttributeTok{xlab =} \FunctionTok{expression}\NormalTok{(lambda), }\AttributeTok{ylab =} \StringTok{"Density"}\NormalTok{, }
+     \AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Gamma (1,1) Prior and its Posterior"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(lambda, prior3, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Posterior"}\NormalTok{, }\StringTok{"Prior"}\NormalTok{),  }
+       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{),  }
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"black"}\NormalTok{),  }
+       \AttributeTok{bty =} \StringTok{"n"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{unnamed-chunk-2-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plotting the Gamma (2,2) prior along with its posterior distribution}
+\NormalTok{lambda }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.00}\NormalTok{,}\FloatTok{5.00}\NormalTok{,}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{prior4 }\OtherTok{\textless{}{-}} \FunctionTok{dgamma}\NormalTok{(lambda, }\AttributeTok{shape =} \DecValTok{2}\NormalTok{, }\AttributeTok{rate =} \DecValTok{2}\NormalTok{)}
+\NormalTok{post4 }\OtherTok{\textless{}{-}} \FunctionTok{dgamma}\NormalTok{(lambda, }\AttributeTok{shape =} \DecValTok{311}\NormalTok{, }\AttributeTok{rate =} \DecValTok{367}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(lambda, post4, }\AttributeTok{xlab =} \FunctionTok{expression}\NormalTok{(lambda), }\AttributeTok{ylab =} \StringTok{"Density"}\NormalTok{, }
+     \AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Gamma (2,2) Prior and its Posterior"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(lambda, prior4, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Posterior"}\NormalTok{, }\StringTok{"Prior"}\NormalTok{),  }
+       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{),  }
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"black"}\NormalTok{),  }
+       \AttributeTok{bty =} \StringTok{"n"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{unnamed-chunk-2-4.pdf}
+
+\item \textbf{Provide the Bayes estimates for $\lambda$ under the quadratic, symmetric linear, and binary losses.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gamma }\OtherTok{\textless{}{-}}\NormalTok{ gamma }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{mean.post =}\NormalTok{ a.star }\SpecialCharTok{/}\NormalTok{ b.star,}
+         \AttributeTok{median.post =} \FunctionTok{qgamma}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{shape =}\NormalTok{ a.star, }\AttributeTok{rate =}\NormalTok{ b.star),}
+         \AttributeTok{mode.post =}\NormalTok{ (a.star }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ b.star) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Rounding off values of decimals to 4 decimal places}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric), round, }\DecValTok{4}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     a   b total_count   n a.star b.star mean.post median.post mode.post
+## 1 0.1 0.1         309 365  309.1  365.1    0.8466      0.8457    0.8439
+## 2 0.5 0.5         309 365  309.5  365.5    0.8468      0.8459    0.8440
+## 3 1.0 1.0         309 365  310.0  366.0    0.8470      0.8461    0.8443
+## 4 2.0 2.0         309 365  311.0  367.0    0.8474      0.8465    0.8447
+\end{verbatim}
+
+\hfill
+
+\item \textbf{Generate the 95\% HPD interval for each posterior distribution.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# HPD interval for posterior of Gamma (0.1,0.1) prior}
+\NormalTok{hpd1 }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{hpd}\NormalTok{(}\AttributeTok{posterior.icdf =}\NormalTok{ qgamma, }\AttributeTok{shape =} \FloatTok{309.1}\NormalTok{, }\AttributeTok{rate =} \FloatTok{365.1}\NormalTok{), }
+    \AttributeTok{digits =} \DecValTok{4}\NormalTok{)}
+
+\CommentTok{\# HPD interval for posterior of Gamma (0.5,0.5) prior}
+\NormalTok{hpd2 }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{hpd}\NormalTok{(}\AttributeTok{posterior.icdf =}\NormalTok{ qgamma, }\AttributeTok{shape =} \FloatTok{309.5}\NormalTok{, }\AttributeTok{rate =} \FloatTok{365.5}\NormalTok{), }
+    \AttributeTok{digits =} \DecValTok{4}\NormalTok{)}
+
+\CommentTok{\# HPD interval for posterior of Gamma (1,1) prior}
+\NormalTok{hpd3 }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{hpd}\NormalTok{(}\AttributeTok{posterior.icdf =}\NormalTok{ qgamma, }\AttributeTok{shape =} \DecValTok{310}\NormalTok{, }\AttributeTok{rate =} \DecValTok{366}\NormalTok{), }
+    \AttributeTok{digits =} \DecValTok{4}\NormalTok{)}
+
+\CommentTok{\# HPD interval for posterior of Gamma (2,2) prior}
+\NormalTok{hpd4 }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{hpd}\NormalTok{(}\AttributeTok{posterior.icdf =}\NormalTok{ qgamma, }\AttributeTok{shape =} \DecValTok{311}\NormalTok{, }\AttributeTok{rate =} \DecValTok{367}\NormalTok{), }
+    \AttributeTok{digits =} \DecValTok{4}\NormalTok{)}
+
+\NormalTok{hpd\_intervals }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{hpd.lower95 =} \FunctionTok{c}\NormalTok{(hpd1[}\DecValTok{1}\NormalTok{], hpd2[}\DecValTok{1}\NormalTok{], hpd3[}\DecValTok{1}\NormalTok{], hpd4[}\DecValTok{1}\NormalTok{]),}
+  \AttributeTok{hpd.upper95 =} \FunctionTok{c}\NormalTok{(hpd1[}\DecValTok{2}\NormalTok{], hpd2[}\DecValTok{2}\NormalTok{], hpd3[}\DecValTok{2}\NormalTok{], hpd4[}\DecValTok{2}\NormalTok{]))}
+
+\NormalTok{gamma }\SpecialCharTok{\%\textgreater{}\%}
+ \FunctionTok{bind\_cols}\NormalTok{(hpd\_intervals) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{mean.post, }\SpecialCharTok{{-}}\NormalTok{median.post, }\SpecialCharTok{{-}}\NormalTok{mode.post)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     a   b total_count   n a.star b.star hpd.lower95 hpd.upper95
+## 1 0.1 0.1         309 365  309.1  365.1      0.7531      0.9417
+## 2 0.5 0.5         309 365  309.5  365.5      0.7533      0.9418
+## 3 1.0 1.0         309 365  310.0  366.0      0.7536      0.9420
+## 4 2.0 2.0         309 365  311.0  367.0      0.7541      0.9423
+\end{verbatim}
+
+\hfill
+
+\item \textbf{Assess the evidence about $H_0: \lambda \leq 1$ and $H_1: \lambda > 1$ for each posterior distribution using Bayes factor.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gamma }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(a, b, a.star, b.star) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{p.h1.prior =} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pgamma}\NormalTok{(}\AttributeTok{q =} \DecValTok{1}\NormalTok{, }\AttributeTok{shape =}\NormalTok{ a, }\AttributeTok{rate =}\NormalTok{ b),}
+    \AttributeTok{p.h1.post =} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pgamma}\NormalTok{(}\AttributeTok{q =} \DecValTok{1}\NormalTok{, }\AttributeTok{shape =}\NormalTok{ a.star, }\AttributeTok{rate =}\NormalTok{ b.star)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{bf.10 =}\NormalTok{ (p.h1.post)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{p.h1.post)}\SpecialCharTok{/}\NormalTok{(p.h1.prior}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{p.h1.prior)),}
+    \AttributeTok{bf.01 =} \DecValTok{1}\SpecialCharTok{/}\NormalTok{bf}\FloatTok{.10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(-p.h1.prior, -p.h1.post) }\SpecialCharTok{\%\textgreater{}\%}
+    \CommentTok{\# Rounding off values of decimals to 4 decimal places}
+    \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric), round, }\DecValTok{4}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     a   b a.star b.star   bf.10     bf.01
+## 1 0.1 0.1  309.1  365.1  0.0059  169.9986
+## 2 0.5 0.5  309.5  365.5  0.0027  376.9806
+## 3 1.0 1.0  310.0  366.0  0.0021  468.6151
+## 4 2.0 2.0  311.0  367.0  0.0018  542.4913
+\end{verbatim}
+
+For all four Gamma priors, the Bayes factor for $H_1$ is less than 1, meaning there is negative evidence for the alternative hypothesis, based on the scale suggested by Jeffreys (1961). Moreover, the Bayes factor for $H_0$, $B_{01} > 10^2$ for all four Gamma priors, indicating that there is \textbf{decisive evidence in support of the null hypothesis} that the average number of sexual partners for women is less than 1.
+
+\end{enumerate}
+
+\section{Problem 2}
+\textbf{Recall our exercise about the proportion of voters who will support each of the 66 senatorial candidates. Suppose that we model the number of voters who will vote for the $i$th candidate from the February 2025 \textit{Pulso ng Bayan} Pre-Electoral national survey using Binomial($n = 2400,\theta_i$). Use the posterior distribution for each candidate from our exercise as the prior distribution for each candidate.} \\
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Importing the results of the PnB survey for Jan 2025}
+\NormalTok{pnb.jan }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}
+    \AttributeTok{path =} \StringTok{"C:/Users/amore\_6ou078y/OneDrive/Documents/Pulso ng Bayan.xlsx"}\NormalTok{, }
+    \AttributeTok{sheet =} \StringTok{"Jan 2025"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(pnb.jan)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 5
+##   candidate                party  aware  vote rank 
+##   <chr>                    <chr>  <dbl> <dbl> <chr>
+## 1 TULFO, ERWIN             LAKAS     99  62.8 1    
+## 2 GO, BONG GO              PDPLBN    99  50.4 2-3  
+## 3 SOTTO, TITO              NPC       99  50.2 2-4  
+## 4 TULFO, BEN BITAG         IND       97  46.2 3-8  
+## 5 CAYETANO, PIA            NP        98  46.1 4-8  
+## 6 BONG REVILLA, RAMON, JR. LAKAS     98  46   4-8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Importing the results of the PnB survey for Feb 2025}
+\NormalTok{pnb.feb }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}
+    \AttributeTok{path =} \StringTok{"C:/Users/amore\_6ou078y/OneDrive/Documents/Pulso ng Bayan.xlsx"}\NormalTok{, }
+    \AttributeTok{sheet =} \StringTok{"Feb 2025"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(pnb.feb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 5
+##   candidate                party  aware  vote rank 
+##   <chr>                    <chr>  <dbl> <dbl> <chr>
+## 1 GO, BONG GO              PDPLBN   100  58.1 1-2  
+## 2 TULFO, ERWIN             LAKAS     98  56.6 1-2  
+## 3 SOTTO, TITO              NPC      100  49   3-4  
+## 4 BONG REVILLA, RAMON, JR. LAKAS    100  46.1 3-6  
+## 5 DELA ROSA, BATO          PDPLBN   100  44.3 4-7  
+## 6 REVILLAME, WILLIE WIL    IND       98  42.3 4-9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Updating pnb.jan with the posterior parameters computed in our class exercise}
+\NormalTok{pnb.jan }\OtherTok{\textless{}{-}}\NormalTok{ pnb.jan }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{count =} \FunctionTok{ceiling}\NormalTok{(vote}\SpecialCharTok{/}\DecValTok{100}\SpecialCharTok{*}\DecValTok{2400}\NormalTok{),}
+         \AttributeTok{a.star =} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ count,}
+         \AttributeTok{b.star =} \DecValTok{1} \SpecialCharTok{+} \DecValTok{2400} \SpecialCharTok{{-}}\NormalTok{ count)}
+\CommentTok{\# Creating a new column in pnb.feb for the no. of votes per candidate}
+\NormalTok{pnb.feb }\OtherTok{\textless{}{-}}\NormalTok{ pnb.feb }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{count=} \FunctionTok{ceiling}\NormalTok{(vote}\SpecialCharTok{/}\DecValTok{100}\SpecialCharTok{*}\DecValTok{2400}\NormalTok{))}
+\FunctionTok{head}\NormalTok{(pnb.jan)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 8
+##   candidate                party  aware  vote rank  count a.star b.star
+##   <chr>                    <chr>  <dbl> <dbl> <chr> <dbl>  <dbl>  <dbl>
+## 1 TULFO, ERWIN             LAKAS     99  62.8 1      1508   1509    893
+## 2 GO, BONG GO              PDPLBN    99  50.4 2-3    1210   1211   1191
+## 3 SOTTO, TITO              NPC       99  50.2 2-4    1205   1206   1196
+## 4 TULFO, BEN BITAG         IND       97  46.2 3-8    1109   1110   1292
+## 5 CAYETANO, PIA            NP        98  46.1 4-8    1107   1108   1294
+## 6 BONG REVILLA, RAMON, JR. LAKAS     98  46   4-8    1104   1105   1297
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(pnb.feb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 6
+##   candidate                party  aware  vote rank  count
+##   <chr>                    <chr>  <dbl> <dbl> <chr> <dbl>
+## 1 GO, BONG GO              PDPLBN   100  58.1 1-2    1395
+## 2 TULFO, ERWIN             LAKAS     98  56.6 1-2    1359
+## 3 SOTTO, TITO              NPC      100  49   3-4    1176
+## 4 BONG REVILLA, RAMON, JR. LAKAS    100  46.1 3-6    1107
+## 5 DELA ROSA, BATO          PDPLBN   100  44.3 4-7    1064
+## 6 REVILLAME, WILLIE WIL    IND       98  42.3 4-9    1016
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Merging pnb.jan and pnb.feb}
+\NormalTok{pnb.feb }\OtherTok{\textless{}{-}}\NormalTok{ pnb.feb }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(pnb.jan }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(candidate, a.star, b.star), }
+            \AttributeTok{by =} \StringTok{"candidate"}\NormalTok{, }
+            \AttributeTok{suffix =} \FunctionTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"\_jan"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{a\_prior =} \FunctionTok{ifelse}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(a.star), a.star, }\DecValTok{1}\NormalTok{),  }
+    \AttributeTok{b\_prior =} \FunctionTok{ifelse}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(b.star), b.star, }\DecValTok{1}\NormalTok{),  }
+    
+    \CommentTok{\# Computing new a.star and b.star using priors}
+    \AttributeTok{a.star\_new =}\NormalTok{ a\_prior }\SpecialCharTok{+}\NormalTok{ count,}
+    \AttributeTok{b.star\_new =}\NormalTok{ b\_prior }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{2400} \SpecialCharTok{{-}}\NormalTok{ count)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{party, }\SpecialCharTok{{-}}\NormalTok{aware, }\SpecialCharTok{{-}}\NormalTok{vote, }\SpecialCharTok{{-}}\NormalTok{rank, }\SpecialCharTok{{-}}\NormalTok{a.star, }\SpecialCharTok{{-}}\NormalTok{b.star)}
+\FunctionTok{head}\NormalTok{(pnb.feb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 64 x 6
+##    candidate                count a_prior b_prior a.star_new b.star_new
+##    <chr>                    <dbl>   <dbl>   <dbl>      <dbl>      <dbl>
+##  1 GO, BONG GO               1395    1211    1191       2606       2196
+##  2 TULFO, ERWIN              1359    1509     893       2868       1934
+##  3 SOTTO, TITO               1176    1206    1196       2382       2420
+##  4 BONG REVILLA, RAMON, JR.  1107    1105    1297       2212       2590
+##  5 DELA ROSA, BATO           1064     990    1412       2054       2748
+##  6 REVILLAME, WILLIE WIL     1016    1007    1395       2023       2779
+##  7 TULFO, BEN BITAG           977    1110    1292       2087       2715
+##  8 PACQUIAO, MANNY PACMAN     958     976    1426       1934       2868
+##  9 LAPID, LITO                946     906    1496       1852       2950
+## 10 BINAY, ABBY                903     988    1414       1891       2911
+## # i 54 more rows
+\end{verbatim}
+
+\begin{enumerate}
+    
+\item \textbf{Visualize the 95\% HPD intervals for senatorial candidates with the correspond-
+ing posterior median using \texttt{geom\_pointrange}. Order the candidates by increasing posterior median.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pnb.feb }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{median =} \FunctionTok{qbeta}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{shape1 =}\NormalTok{ a.star\_new, }\AttributeTok{shape2 =}\NormalTok{ b.star\_new)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{hpd.lower95 =} \FunctionTok{hpd}\NormalTok{(}\AttributeTok{posterior.icdf =}\NormalTok{ qbeta,}
+                           \AttributeTok{shape1 =}\NormalTok{ a.star\_new,}
+                           \AttributeTok{shape2 =}\NormalTok{ b.star\_new,}
+                           \AttributeTok{conf =} \FloatTok{0.95}\NormalTok{)[}\DecValTok{1}\NormalTok{],}
+         \AttributeTok{hpd.upper95 =} \FunctionTok{hpd}\NormalTok{(}\AttributeTok{posterior.icdf =}\NormalTok{ qbeta,}
+                           \AttributeTok{shape1 =}\NormalTok{ a.star\_new,}
+                           \AttributeTok{shape2 =}\NormalTok{ b.star\_new,}
+                           \AttributeTok{conf =} \FloatTok{0.95}\NormalTok{)[}\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_pointrange}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{xmin =}\NormalTok{ hpd.lower95, }
+                      \AttributeTok{xmax =}\NormalTok{ hpd.upper95, }
+                      \AttributeTok{x =}\NormalTok{ median,}
+                      \AttributeTok{y =} \FunctionTok{reorder}\NormalTok{(candidate, median))) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Proportion of Voters"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.title.y =} \FunctionTok{element\_blank}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{unnamed-chunk-9-1.pdf}
+
+\item \textbf{Who among the senatorial candidates is supported by the majority of voters? Support your answer using Bayes factor.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Computing for Bayes factor}
+\NormalTok{pnb.feb }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{p.h1.prior =} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pbeta}\NormalTok{(}\AttributeTok{q =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{shape1 =}\NormalTok{ a\_prior, }\AttributeTok{shape2 =}\NormalTok{ b\_prior),}
+    \AttributeTok{p.h1.post =} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pbeta}\NormalTok{(}\AttributeTok{q =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{shape1 =}\NormalTok{ a.star\_new, }\AttributeTok{shape2 =}\NormalTok{ b.star\_new),}
+    \AttributeTok{bf.10 =} \FunctionTok{ifelse}\NormalTok{(p.h1.post }\SpecialCharTok{==} \DecValTok{0} \SpecialCharTok{|}\NormalTok{ p.h1.post }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }
+          \NormalTok{(p.h1.post }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ p.h1.post)) }\SpecialCharTok{/}\NormalTok{ (p.h1.prior }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ p.h1.prior))),}
+    \AttributeTok{bf.01 =} \FunctionTok{ifelse}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(bf}\FloatTok{.10}\NormalTok{), }\ConstantTok{NA}\NormalTok{, }\DecValTok{1} \SpecialCharTok{/}\NormalTok{ bf}\FloatTok{.10}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(candidate, p.h1.prior, p.h1.post, bf}\FloatTok{.10}\NormalTok{, bf}\FloatTok{.01}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Rounding off values of decimals to 4 decimal places}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric), round, }\DecValTok{4}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+
+\begin{verbatim}
+## # A tibble: 6 x 5
+##   candidate                p.h1.prior p.h1.post    bf.10   bf.01
+##   <chr>                         <dbl>     <dbl>    <dbl>   <dbl>
+## 1 GO, BONG GO                   0.658     1      3.24e+8     0   
+## 2 TULFO, ERWIN                  1         1         NA       NA   
+## 3 SOTTO, TITO                   0.581     0.292  2.97e-1    3.36
+## 4 BONG REVILLA, RAMON, JR.      0         0        5e-4     1838
+## 5 DELA ROSA, BATO               0         0         NA       NA   
+## 6 REVILLAME, WILLIE WIL         0         0         NA       NA
+\end{verbatim}
+
+According to the scale suggested by Jeffreys (1961) for interpreting the Bayes factor, it is only for \textbf{Bong Go} that there is decisive evidence that the majority of voters supports his candidacy, with a Bayes factor for $H_1$ of $B_{10} \approx 3.24e+8$. 
+
+However, it is important to note that while the Bayes factor for $H_1$ for Erwin Tulfo cannot be assessed based on the scale, this is due to both his prior and posterior probability of $H_1$ being approximately equal to 1. As a result, the Bayes factor calculation leads to an indeterminate form (0/0), making it mathematically undefined and returning an NA. Despite this, the fact that the posterior probability remains virtually equal to 1 strongly suggests that \textbf{Erwin Tulfo} has decisive support from the majority of voters.
+
+\end{enumerate}
+
+\section{Problem 3}
+\textbf{Suppose that MMDA is studying the number of traffic accidents per month occurring at
+a certain intersection. They collected data for the past two years, given as follows:}
+\hfill
+\begin{center}
+2 4 3 1 1 3 2 2 4 0 5 2 5 2 4 4 3 1 3 8 4 2 1 1
+\end{center}
+\hfill
+
+\textbf{The researchers have prior information on the Poisson parameter and believe that the
+Poisson parameter is 3 on the average with a standard deviation of 3. A gamma conjugate
+prior is used to represent the prior information.}
+
+\begin{enumerate}
+
+\item \textbf{What is the 95\% HPD interval for the Poisson parameter?}
+\hfill
+\[
+y_1,y_2,...,y_{24} | \lambda \sim Poisson(\lambda)
+\]
+\[
+\lambda \sim Gamma(a,b),\;\;\; b>0
+\]
+
+To compute the hyperparameters of the prior Gamma distribution, note that the mean of the gamma distribution is $E(\lambda) = \frac{a}{b}$ and its variance is $Var(\lambda) = \frac{a}{b^2}$. Thus, based on the given, 
+\[
+E(\lambda) = 3 =\frac{a}{b} \tag{1} \label{mean}
+\]
+\[
+Var(\lambda) = 3^2 = \frac{a}{b^2} \tag{2} \label{variance}
+\]
+
+From \eqref{mean}, we can express $a$ as $a = 3b$. Substituting this expression for $a$ into \eqref{variance},
+\[
+\frac{3b}{b^2} = 9
+\]
+\[
+\rightarrow b = \frac{1}{3}
+\]
+\[
+\xrightarrow{(1)} a = 3\left(\frac{1}{3}\right) = 1
+\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{accidents }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{8}\NormalTok{, }
+               \DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(accidents)}
+
+\CommentTok{\# Prior Parameters}
+\NormalTok{a\_prior }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{b\_prior }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\DecValTok{3}
+
+\CommentTok{\# Posterior Parameters}
+\NormalTok{a\_post }\OtherTok{\textless{}{-}}\NormalTok{ a\_prior }\SpecialCharTok{+} \FunctionTok{sum}\NormalTok{(accidents)}
+\NormalTok{b\_post }\OtherTok{\textless{}{-}}\NormalTok{ b\_prior }\SpecialCharTok{+}\NormalTok{ n }
+
+\CommentTok{\# 95\% HPD Interval}
+\NormalTok{hpd\_interval }\OtherTok{\textless{}{-}} \FunctionTok{hpd}\NormalTok{(qgamma, }\AttributeTok{shape =}\NormalTok{ a\_post, }\AttributeTok{rate =}\NormalTok{ b\_post, }\AttributeTok{conf =} \FloatTok{0.95}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"95\%\% HPD Interval: (\%.4f, \%.4f)"}\NormalTok{, hpd\_interval[}\DecValTok{1}\NormalTok{],} 
+              \NormalTok{hpd\_interval[}\DecValTok{2}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 95% HPD Interval: (2.1450 3.4673)
+\end{verbatim}
+
+\item \textbf{The researchers wanted to test whether the mean number of traffic accidents per month is equal to 3 or not at 5\% level of significance. What is the conclusion when the hypothesis test is performed?}
+
+\[
+H_o: \lambda = 3
+\]
+\[
+H_1: \lambda \neq 3
+\]
+
+When dealing with a point null hypothesis, it suffices to check whether or not the hypothesized value of the parameter belongs in the HPD interval to decide if $H_0$ should be rejected. The computed 95\% HPD interval for $\lambda$ in the previous item was (2.1450, 3.4673). Since the interval contains 3, the hypothesized value of $\lambda$, we \textbf{do not reject $H_0$.} There is insufficient evidence to say that the mean number of traffic accidents per month is not equal to 3 at 5\% level of significance. 
+
+
+\item \textbf{Consequently, the researchers wanted to test whether the mean number of traffic
+accidents per month is greater than 3 or not.}
+
+\textbf{(a) At 5\% level of significance, what is the conclusion when the hypothesis test is
+performed?}
+
+Testing $H_0: \lambda \leq 3$ vs. $H_1: \lambda > 3$ at $\alpha = 0.05$,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p.h0 }\OtherTok{=} \FunctionTok{pgamma}\NormalTok{(}\AttributeTok{q =} \DecValTok{3}\NormalTok{, }\AttributeTok{shape =}\NormalTok{ a\_post, }\AttributeTok{rate =}\NormalTok{ b\_post)}
+\NormalTok{reject.ho }\OtherTok{=} \FunctionTok{ifelse}\NormalTok{(p.h0}\SpecialCharTok{\textless{}}\FloatTok{0.05}\NormalTok{, }\StringTok{"yes"}\NormalTok{,}\StringTok{"no"}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"reject.ho:"}\NormalTok{, reject.ho)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## reject.ho: no
+\end{verbatim}
+\hfill
+At 5\% level of significance, we do not reject $H_o$. There is insufficient evidence to say that the mean number of traffic accidents per month is greater than 3.
+
+\textbf{(b) Using Bayes factor, what is the conclusion when the hypothesis test is performed?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Computing for Bayes factor}
+\NormalTok{p.h1.prior }\OtherTok{=} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pgamma}\NormalTok{(}\AttributeTok{q =} \DecValTok{3}\NormalTok{, }\AttributeTok{shape =}\NormalTok{ a\_prior, }\AttributeTok{rate =}\NormalTok{ b\_prior)}
+\NormalTok{p.h1.post }\OtherTok{=} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pgamma}\NormalTok{(}\AttributeTok{q =} \DecValTok{3}\NormalTok{, }\AttributeTok{shape =}\NormalTok{ a\_post, }\AttributeTok{rate =}\NormalTok{ b\_post)}
+\NormalTok{bf}\FloatTok{.10} \OtherTok{=}\NormalTok{ (p.h1.post }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ p.h1.post)) }\SpecialCharTok{/}\NormalTok{ (p.h1.prior }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ p.h1.prior))}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Bayes Factor:"}\NormalTok{, \FunctionTok{round}\NormalTok{(bf}\FloatTok{.10}\NormalTok{, }\AttributeTok{digits =} \DecValTok{4}\NormalTok{))}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Bayes Factor: 0.6151
+\end{verbatim}
+\hfill
+
+Since $B_{10} < 1$, we have negative evidence for the alternative hypothesis that $\lambda > 3$, i.e., \textbf{the null hypothesis is supported and should not be rejected.}
+
+\end{enumerate}
+
+\end{document}
